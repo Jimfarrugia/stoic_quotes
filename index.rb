@@ -30,15 +30,20 @@ class StoicQuotes
   end
 
   def pick_quote num
-    num >=0 && num <= 32 ? @request[num]["attributes"]["text"] : nil
+    num >=0 && num <= @num_of_quotes ? @request[num]["attributes"]["text"] : nil
   end
 
+  def random_quote
+    num = rand(0..@num_of_quotes)
+    @request[num]["attributes"]["text"] 
+  end
 end
 
 stoic_quotes = StoicQuotes.new
 
-puts stoic_quotes.first_quote
-puts stoic_quotes.last_quote
+puts "First Quote: " + stoic_quotes.first_quote
+puts "Last Quote: " + stoic_quotes.last_quote
 if stoic_quotes.pick_quote(33)
-  puts stoic_quotes.pick_quote(33)
+  puts "Chosen Quote: " + stoic_quotes.pick_quote(33)
 end
+puts "Random Quote: " + stoic_quotes.random_quote
