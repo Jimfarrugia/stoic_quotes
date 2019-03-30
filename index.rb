@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'httparty'
+require 'colorize'
 
 # API
 # https://randomstoicquotesapi.herokuapp.com/
@@ -39,8 +40,9 @@ end
 
 def title_border
   @title.length.times do
-    print "*"
+    print "*".colorize(:red)
   end
+  print "\n"
 end
 
 def clear_terminal
@@ -58,7 +60,7 @@ menu += "X = Exit"
 prompt = "> "
 
 title_border
-puts "\n", @title
+puts @title.colorize(:red)
 title_border
 
 puts "\n", menu
@@ -68,11 +70,11 @@ input = gets.strip
 
 until input == "X" || input == "x"
   if input == "R" || input == "r"
-    puts "\n", stoic_quotes.random_quote, "\n"
+    puts "\n", stoic_quotes.random_quote.colorize(:green), "\n"
     print prompt
     input = gets.strip
   else
-    puts "Please enter 'R' (random quote) or 'X' (exit)."
+    puts "\n", "Please enter 'R' (random quote) or 'X' (exit)."
     print prompt
     input = gets.strip
   end
