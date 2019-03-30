@@ -6,8 +6,6 @@ require 'httparty'
 # API Docs
 # https://github.com/jimmerioles/random-stoic-quotes-api
 
-@display = nil
-
 class StoicQuotes
   include HTTParty
   base_uri "randomstoicquotesapi.herokuapp.com"
@@ -62,11 +60,3 @@ until input == "X" || input == "x"
     input = gets.strip
   end
 end
-
-#puts "First Quote: " + stoic_quotes.first_quote
-#puts "Last Quote: " + stoic_quotes.last_quote
-#if stoic_quotes.pick_quote(33)
-#  puts "Chosen Quote: " + stoic_quotes.pick_quote(33)
-#end
-#puts "Random Quote: " + stoic_quotes.random_quote
-
