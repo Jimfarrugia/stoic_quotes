@@ -30,7 +30,7 @@ class StoicQuotes
   end
 
   def pick_quote num
-    num >=0 && num <= 33 ? @request[num]["attributes"]["text"] : "Number must be 1-32"
+    num >=0 && num <= 32 ? @request[num]["attributes"]["text"] : nil
   end
 
 end
@@ -39,4 +39,6 @@ stoic_quotes = StoicQuotes.new
 
 puts stoic_quotes.first_quote
 puts stoic_quotes.last_quote
-puts stoic_quotes.pick_quote(3)
+if stoic_quotes.pick_quote(33)
+  puts stoic_quotes.pick_quote(33)
+end
