@@ -32,7 +32,3 @@ stoic_quotes = StoicQuotes.new
 
 puts stoic_quotes.first_quote
 puts stoic_quotes.num_of_quotes
-#request.quotes.each do |item|
-#  p item
-#  puts "\n\n"
-#end
