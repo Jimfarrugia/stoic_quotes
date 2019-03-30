@@ -60,20 +60,24 @@ menu += "X = Exit"
      
 prompt = "> "
 
+clear_terminal
 title_border
 puts @title.colorize(:red)
 title_border
 
-puts "\n", menu
+puts menu
 print prompt
 
 while input = gets.strip
 
   case input
   when "R", "r"
+    clear_terminal
     puts "\n", stoic_quotes.random_quote.colorize(:green), "\n"
+    puts menu
     print prompt
   when "L", "l"
+    clear_terminal
     num_of_quotes = stoic_quotes.num_of_quotes
     i = 0
     until i >= (num_of_quotes - 1)
@@ -84,6 +88,7 @@ while input = gets.strip
       end
       i += 1
     end
+    puts menu
     print prompt
   when "X", "x"
     exit
@@ -91,5 +96,5 @@ while input = gets.strip
     puts "\n", "Please enter 'R' (random quote), 'L' (list all) or 'X' (exit)."
     print prompt
   end
-  
+
 end
