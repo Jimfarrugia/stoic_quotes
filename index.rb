@@ -37,20 +37,33 @@ class StoicQuotes
   end
 end
 
+def title_border
+  @title.length.times do
+    print "*"
+  end
+end
+
 def clear_terminal
   Gem.win_platform? ? (system "cls") : (system "clear")
 end
 
 stoic_quotes = StoicQuotes.new
 
-puts "\nStoic Quote Generator\n\n"
-puts "What would you like to do?\n\n"
-puts "R = Get a Random Quote",
-     "X = Exit"
+@title = "Stoic Quote Generator"
 
+menu  = "What would you like to do?\n\n"
+menu += "R = Get a Random Quote\n"
+menu += "X = Exit"
+     
 prompt = "> "
 
+title_border
+puts "\n", @title
+title_border
+
+puts "\n", menu
 print prompt
+
 input = gets.strip
 
 until input == "X" || input == "x"
