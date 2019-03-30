@@ -54,7 +54,8 @@ stoic_quotes = StoicQuotes.new
 @title = "Stoic Quote Generator"
 
 menu  = "What would you like to do?\n\n"
-menu += "R = Get a Random Quote\n"
+menu += "R = Print a Random Quote\n"
+menu += "L = List All Stoic Quotes\n"
 menu += "X = Exit"
      
 prompt = "> "
@@ -66,16 +67,29 @@ title_border
 puts "\n", menu
 print prompt
 
-input = gets.strip
+while input = gets.strip
 
-until input == "X" || input == "x"
-  if input == "R" || input == "r"
+  case input
+  when "R", "r"
     puts "\n", stoic_quotes.random_quote.colorize(:green), "\n"
     print prompt
-    input = gets.strip
-  else
-    puts "\n", "Please enter 'R' (random quote) or 'X' (exit)."
+  when "L", "l"
+    num_of_quotes = stoic_quotes.num_of_quotes
+    i = 0
+    until i >= (num_of_quotes - 1)
+      if i.even?
+        puts stoic_quotes.pick_quote(i).colorize(:magenta), "\n"
+      else
+        puts stoic_quotes.pick_quote(i).colorize(:green), "\n"
+      end
+      i += 1
+    end
     print prompt
-    input = gets.strip
+  when "X", "x"
+    exit
+  else
+    puts "\n", "Please enter 'R' (random quote), 'L' (list all) or 'X' (exit)."
+    print prompt
   end
+  
 end
