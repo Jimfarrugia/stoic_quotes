@@ -37,6 +37,10 @@ class StoicQuotes
   end
 end
 
+def clear_terminal
+  Gem.win_platform? ? (system "cls") : (system "clear")
+end
+
 stoic_quotes = StoicQuotes.new
 
 puts "\nStoic Quote Generator\n\n"
