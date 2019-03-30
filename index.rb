@@ -30,16 +30,21 @@ class StoicQuotes
   end
 
   def pick_quote num
-    num >=0 && num <= @num_of_quotes ? @request[num]["attributes"]["text"] : nil
+    num >=0 && num <= (@num_of_quotes - 1) ? @request[num]["attributes"]["text"] : nil
   end
 
   def random_quote
-    num = rand(0..@num_of_quotes)
+    num = rand(0..(@num_of_quotes - 1))
     @request[num]["attributes"]["text"] 
   end
 end
 
 stoic_quotes = StoicQuotes.new
+
+puts "\nStoic Quote Generator\n\n"
+puts "What would you like to do?\n\n"
+puts "R = Get a Random Quote",
+     "X = Exit"
 
 puts "First Quote: " + stoic_quotes.first_quote
 puts "Last Quote: " + stoic_quotes.last_quote
@@ -47,3 +52,4 @@ if stoic_quotes.pick_quote(33)
   puts "Chosen Quote: " + stoic_quotes.pick_quote(33)
 end
 puts "Random Quote: " + stoic_quotes.random_quote
+
