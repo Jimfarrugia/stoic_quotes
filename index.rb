@@ -6,17 +6,28 @@ require 'httparty'
 # API Docs
 # https://github.com/jimmerioles/random-stoic-quotes-api
 
-class Request
+@display = nil
+
+class StoicQuotes
   include HTTParty
   base_uri "randomstoicquotesapi.herokuapp.com"
 
-  def quotes
-    self.class.get('/api/v1/quotes')
+  def initialize
+    @request = self.class.get('/api/v1/quotes')["data"]
   end
+  
+  def first_quote
+    @request[0]["attributes"]["text"]
+  end
+
+  
+
 end
 
-request = Request.new
+stoic_quotes = StoicQuotes.new
 
-request.quotes.each do |item|
-  puts item
-end
+puts stoic_quotes.first_quote
+#request.quotes.each do |item|
+#  p item
+#  puts "\n\n"
+#end
