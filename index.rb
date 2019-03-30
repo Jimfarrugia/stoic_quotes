@@ -46,10 +46,27 @@ puts "What would you like to do?\n\n"
 puts "R = Get a Random Quote",
      "X = Exit"
 
-puts "First Quote: " + stoic_quotes.first_quote
-puts "Last Quote: " + stoic_quotes.last_quote
-if stoic_quotes.pick_quote(33)
-  puts "Chosen Quote: " + stoic_quotes.pick_quote(33)
+prompt = "> "
+
+print prompt
+input = gets.strip
+
+until input == "X" || input == "x"
+  if input == "R" || input == "r"
+    puts "\n", stoic_quotes.random_quote, "\n"
+    print prompt
+    input = gets.strip
+  else
+    puts "Please enter 'R' (random quote) or 'X' (exit)."
+    print prompt
+    input = gets.strip
+  end
 end
-puts "Random Quote: " + stoic_quotes.random_quote
+
+#puts "First Quote: " + stoic_quotes.first_quote
+#puts "Last Quote: " + stoic_quotes.last_quote
+#if stoic_quotes.pick_quote(33)
+#  puts "Chosen Quote: " + stoic_quotes.pick_quote(33)
+#end
+#puts "Random Quote: " + stoic_quotes.random_quote
 
