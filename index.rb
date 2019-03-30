@@ -25,10 +25,14 @@ class StoicQuotes
     @request[0]["attributes"]["text"]
   end
 
+  def last_quote
+    @request[-1]["attributes"]["text"]
+  end
 
 end
 
 stoic_quotes = StoicQuotes.new
 
 puts stoic_quotes.first_quote
+puts stoic_quotes.last_quote
 puts stoic_quotes.num_of_quotes
