@@ -56,14 +56,16 @@ stoic_quotes = StoicQuotes.new
 menu  = "What would you like to do?\n\n"
 menu += "R = Print a Random Quote\n"
 menu += "L = List All Stoic Quotes\n"
-menu += "X = Exit"
+menu += "X = Exit \n\n"
      
 prompt = "> "
 
 clear_terminal
+puts "\n"
 title_border
 puts @title.colorize(:red)
 title_border
+puts "\n"
 
 puts menu
 print prompt
